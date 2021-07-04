@@ -1,0 +1,194 @@
+//========================= AUTH =========================
+
+###
+# Payload
+    # username: String (required, unique)
+    # password: String (required)
+    # email: String (required, unique)
+POST http://localhost:8000/api/auth/signup
+Content-Type: application/json
+
+{
+    "username": "quachhuy11071",
+    "password": "quachhuy11071",
+    "email": "1754050033huy@gmail.com"
+}
+
+###
+# Payload
+    # username: String (required, unique)
+    # password: String (required)
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "quachhuy11071",
+    "password": "quachhuy11071"
+}
+
+###
+# Payload
+    # refreshToken: String
+POST http://localhost:8000/api/auth/token
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ2MmI4MjlkMmNkNjRjZTg5NTcyYzciLCJpYXQiOjE2MjQ5NjA1NjAsImV4cCI6MTYyNDk3OTU2MH0.vQ7G7WS5tfFSfQSn2fVit2j2h6Ryj16t5xi2K-MKh90"
+}
+
+###
+# Payload
+    # email: String
+POST http://localhost:8000/api/auth/forgot-password
+Content-Type: application/json
+
+{
+    "email": "quachhuy1107@gmail.com"
+}
+
+###
+# Payload
+    # newPassword: String (required)
+    # token: String (required)
+    ###############
+    # endpoint: /api/auth/reset-password/:id
+PUT http://localhost:8000/api/auth/reset-password/60db5baabfe7b269f4ceb3a9
+Content-Type: application/json
+
+{
+    "newPassword": "quachhuy1107",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRiNWJhYWJmZTdiMjY5ZjRjZWIzYTkiLCJpYXQiOjE2MjQ5ODg1ODZ9.27qg7CoWN09zZUFQ90t3mn9AVhC8m_fIYccJv4ilw6g"
+}
+
+###
+# Payload
+    # Test on browser
+    ###############
+    # endpoint: /api/auth/google
+
+//========================= POST =========================
+###
+# Payload
+    # title: String (required)
+    # desc: String
+    # status: enum ("PUBLIC", "PRIVATE")
+    ###############
+    # header: Bearer + accessToken
+POST http://localhost:8000/api/post/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmNWQ5NTRhMDg2NjBmNGM4MTM2YTAiLCJpYXQiOjE2MjUzMzkzOTcsImV4cCI6MTYyNTM0OTM5N30.KPAAraSEOfTgVk5xnn458E-R7hYdffMdDsmdJLUiFvc
+
+{
+    "title": "zzzzz",
+    "desc": "123213"
+}
+
+###
+# Payload
+    # title: String (required)
+    # desc: String
+    # status: enum ("PUBLIC", "PRIVATE")
+    ###############
+    # header: Bearer + accessToken
+    # endpoint: /api/post/:id
+PUT http://localhost:8000/api/post/60db6883e35d5104ec4079b0
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmNWQ5NTRhMDg2NjBmNGM4MTM2YTAiLCJpYXQiOjE2MjUzMzkzOTcsImV4cCI6MTYyNTM0OTM5N30.KPAAraSEOfTgVk5xnn458E-R7hYdffMdDsmdJLUiFvc
+
+{
+    "title":"It's so hard",
+    "desc":"KhoVaiLon",
+    "status":"LEARNING"
+}
+
+###
+# Payload
+    ###############
+    # header: Bearer + accessToken
+    # endpoint: /api/post/:id
+DELETE  http://localhost:8000/api/post/60db6883e35d5104ec4079b0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRiNWJhYWJmZTdiMjY5ZjRjZWIzYTkiLCJpYXQiOjE2MjQ5OTI3MzEsImV4cCI6MTYyNDk5MzczMX0.9LqTJWO60HCWUbyjyx6aGTotKlK_qj33rxmav-dRuS8
+
+//========================= LIKE =========================
+
+###
+# Payload
+    # postId: String (required, unique)
+    # userId: String (required, unique)
+    ###############
+    # header: Bearer + accessToken
+POST http://localhost:8000/api/post/like/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYmUzNDczYThjYTg2N2M2YzQ4MTciLCJpYXQiOjE2MjUwNzk0MTgsImV4cCI6MTYyNTA4MDQxOH0.yWhgy4QzS3DM1Y3KOeI_B23z4qwTTaTLkxWzqRBlrOQ
+Content-Type: application/json
+
+{
+    "postId":"60dcb4e4c6632b66b024227f",
+    "userId": "60dcbe3473a8ca867c6c4817"
+}
+
+###
+# Payload
+    ###############
+    # endpoint: api/post/like/:id
+GET http://localhost:8000/api/post/like/60dcb4e4c6632b66b024227f
+
+//========================= COMMENT =========================
+###
+# Payload
+    # postId: String (required, unique)
+    # userId: String (required, unique)
+    # content: String (required)
+    ###############
+    # header: Bearer + accessToken
+POST http://localhost:8000/api/post/comment/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2MjUwODE4MjJ9.41NsJVJDtmK7vWoV9DpB3ot-j5j8aSOnMPRSKMTSho8
+Content-Type: application/json
+
+{
+    "postId":"60dcb4e4c6632b66b024227f",
+    "userId": "60dcbe3473a8ca867c6c4817",
+    "content": "Viet Nam Vo Dich"
+}
+
+###
+# Payload
+    ###############
+    # endpoint: api/post/comment/:id
+GET http://localhost:8000/api/post/comment/60dcb4e4c6632b66b024227f
+
+//========================= USER =========================
+###
+# Payload
+    # Test on postman
+    ###############
+    # header: Bearer + accessToken
+    # endpoint: api/user/profile/:id
+PATCH  http://localhost:8000/api/user/profile/60dcc7ddb8f700076cd0da31
+Content-Type: multipart/form-data
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2MjUxNTgzOTcsImV4cCI6MTYyNTE2ODM5N30.ILg-exn29udNZi716eXAAoZ1aTsCNGDB5mSiIy9yLD0
+
+###
+# Payload
+    # dateOfBirth: String
+    ###############
+    # header: Bearer + accessToken
+    # endpoint: /api/user/:id
+POST http://localhost:8000/api/user/60dcc7ddb8f700076cd0da31
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2MjUxNTgzOTcsImV4cCI6MTYyNTE2ODM5N30.ILg-exn29udNZi716eXAAoZ1aTsCNGDB5mSiIy9yLD0
+
+{
+    "dateOfBirth":"22/22/2022"
+}
+
+
+###
+POST http://localhost:8000/api/user/friend/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmNWQ5NTRhMDg2NjBmNGM4MTM2YTAiLCJpYXQiOjE2MjUzMzkzOTcsImV4cCI6MTYyNTM0OTM5N30.KPAAraSEOfTgVk5xnn458E-R7hYdffMdDsmdJLUiFvc
+
+{
+    "username":"quachhuy",
+    "userId":"60dcc7ddb8f700076cd0da31"
+}
+###
