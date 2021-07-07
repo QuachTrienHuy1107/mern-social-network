@@ -14,6 +14,7 @@ const UserSchema = new Schema({
     },
     email: {
         type: String,
+        trim: true,
         lowercase: true,
         unique: true,
     },
@@ -27,6 +28,8 @@ const UserSchema = new Schema({
     profile: {
         type: ProfileSchema,
     },
+    followers: [{ type: mongoose.Types.ObjectId, ref: "users" }],
+    following: [{ type: mongoose.Types.ObjectId, ref: "users" }],
     token: {
         type: TokenSchema,
     },

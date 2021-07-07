@@ -79,16 +79,19 @@ const addFriend = async (req, res) => {
     if (!username || !userId) {
         return res.status(404).json({
             success: false,
-            message: "Missing username and/or userId",
+            message: "Missing username or userId",
         });
     }
     try {
-        const friend = await Friend.findById(userId);
-        //If have friend in list friend
-
-        if (!friend) return res.status(404).json({ success: false, message: "User not found" });
+        const newFriend = new Friend({ username, userId });
+        await newFriend.save();
+        res.json({
+            success: true,
+            message: "Post created successfully",
+            data: newFriend,
+        });
     } catch (error) {
-        console.log(error);
+        console.log("error", error);
         res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 };
