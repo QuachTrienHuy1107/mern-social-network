@@ -6,29 +6,36 @@ import "../styles/pages/home.css";
 import RightSideBar from "../components/home/rightsidebar";
 import avatar from "../assets/imgs/logo192.png";
 import { Container } from "@material-ui/core";
+import Header from "../components/header/header";
 
 let scroll = 0;
-export default function homepage() {
-    window.addEventListener("scroll", () => {
-        if (window.location.pathname === "/") {
-            scroll = window.pageYOffset;
-            return scroll;
-        }
-    });
+function Homepage() {
+    React.useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.location.pathname === "/") {
+                scroll = window.pageYOffset;
+                return scroll;
+            }
+        });
+    }, []);
 
     return (
-        <Container>
-            <div className="home row mx-0">
-                <div className="col-md-8">
-                    <Status />
+        <>
+            <Header />
+            <Container>
+                <div className="home row mx-0">
+                    <div className="col-md-8">
+                        <Status />
 
-                    <Posts />
-                </div>
+                        <Posts />
+                    </div>
 
-                <div className="col-md-4">
-                    <RightSideBar />
+                    <div className="col-md-4">
+                        <RightSideBar />
+                    </div>
                 </div>
-            </div>
-        </Container>
+            </Container>
+        </>
     );
 }
+export default Homepage;

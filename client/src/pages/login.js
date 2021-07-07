@@ -2,7 +2,7 @@ import { Button } from "@material-ui/core";
 import React from "react";
 import "../styles/pages/auth.css";
 import { Link } from "react-router-dom";
-export default function login() {
+export default function Login() {
     return (
         <div className="auth_page">
             <form>

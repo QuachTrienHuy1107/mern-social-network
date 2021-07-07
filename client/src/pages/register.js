@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
-export default function register() {
+export default function Register() {
     return (
         <div className="auth_page">
             <form>
