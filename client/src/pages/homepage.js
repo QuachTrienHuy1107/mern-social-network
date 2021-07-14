@@ -10,15 +10,6 @@ import Header from "../components/header/header";
 
 let scroll = 0;
 function Homepage() {
-    React.useEffect(() => {
-        window.addEventListener("scroll", () => {
-            if (window.location.pathname === "/") {
-                scroll = window.pageYOffset;
-                return scroll;
-            }
-        });
-    }, []);
-
     return (
         <>
             <Header />
