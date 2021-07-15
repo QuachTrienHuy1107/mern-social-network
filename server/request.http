@@ -1,4 +1,4 @@
-//========================= AUTH =========================
+//================================================== AUTH ==================================================
 
 ###
 # Payload
@@ -66,7 +66,7 @@ Content-Type: application/json
     ###############
     # endpoint: /api/auth/google
 
-//========================= POST =========================
+//================================================== POST ==================================================
 ###
 # Payload
     # title: String (required)
@@ -109,7 +109,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmN
 DELETE  http://localhost:8000/api/post/60db6883e35d5104ec4079b0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRiNWJhYWJmZTdiMjY5ZjRjZWIzYTkiLCJpYXQiOjE2MjQ5OTI3MzEsImV4cCI6MTYyNDk5MzczMX0.9LqTJWO60HCWUbyjyx6aGTotKlK_qj33rxmav-dRuS8
 
-//========================= LIKE =========================
+//================================================== LIKE ==================================================
 
 ###
 # Payload
@@ -132,7 +132,7 @@ Content-Type: application/json
     # endpoint: api/post/like/:id
 GET http://localhost:8000/api/post/like/60dcb4e4c6632b66b024227f
 
-//========================= COMMENT =========================
+//================================================== COMMENT ==================================================
 ###
 # Payload
     # postId: String (required, unique)
@@ -156,7 +156,7 @@ Content-Type: application/json
     # endpoint: api/post/comment/:id
 GET http://localhost:8000/api/post/comment/60dcb4e4c6632b66b024227f
 
-//========================= USER =========================
+//================================================== USER ==================================================
 ###
 # Payload
     # Test on postman
@@ -181,14 +181,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjY
     "dateOfBirth":"22/22/2022"
 }
 
-
+//================================================== Conversationn ==================================================
 ###
-POST http://localhost:8000/api/user/friend/add
+POST http://localhost:8000/api/chat/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmNWQ5NTRhMDg2NjBmNGM4MTM2YTAiLCJpYXQiOjE2MjUzMzkzOTcsImV4cCI6MTYyNTM0OTM5N30.KPAAraSEOfTgVk5xnn458E-R7hYdffMdDsmdJLUiFvc
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2MjUxNTgzOTcsImV4cCI6MTYyNTE2ODM5N30.ILg-exn29udNZi716eXAAoZ1aTsCNGDB5mSiIy9yLD0
 {
-    "username":"quachhuy",
-    "userId":"60dcc7ddb8f700076cd0da31"
+    "sender":"zxc",
+    "recipient":"123123",
+    "message": "haha"
 }
+
 ###

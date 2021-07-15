@@ -1,0 +1,32 @@
+.auth_page {
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(0deg, rgba(64, 93, 230), rgba(228, 225, 219, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.auth_page form {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    background: #fff;
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 50px 25px;
+}
+
+.auth_page form .pass {
+    position: relative;
+}
+
+.auth_page form .pass small {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0.5;
+}

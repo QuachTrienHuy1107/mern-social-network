@@ -23,6 +23,6 @@ userRouter.post("/:id", verifyToken, createProfile);
  * @route /api/user/friend/add"
  * @access Restricted
  */
-userRouter.post("/friend/add", addFriend);
+userRouter.post("/friend/add", verifyToken, addFriend);
 
 module.exports = userRouter;

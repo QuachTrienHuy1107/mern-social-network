@@ -5,7 +5,7 @@ const verifyToken = (req, res, next) => {
     const token = authHeader && authHeader.trim().split(" ")[1];
 
     if (!token) {
-        return res.status(401).json({ success: false, message: "Access token not found" });
+        return res.status(403).json({ success: false, message: "Access token not found" });
     }
     try {
         const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
@@ -14,8 +14,11 @@ const verifyToken = (req, res, next) => {
         req.userId = decoded?.userId;
         next();
     } catch (error) {
-        console.log(error);
-        return res.status(403).json({ success: false, message: "Invalid token" });
+        console.log(error.message);
+        if (error.message === "jwt expired") {
+            return res.status(401).json({ success: false, message: "Token is expired" });
+        }
+        return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 };
 
