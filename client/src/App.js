@@ -4,7 +4,6 @@ import Register from "./pages/register";
 import HomePage from "./pages/homepage";
 import { Route, Link } from "react-router-dom";
 import Profile from "./pages/profile";
-import Header from "./components/header/header";
 import Discover from "./pages/discover";
 
 function App() {
