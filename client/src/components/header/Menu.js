@@ -34,7 +34,7 @@ export default function menu() {
                     </Link>
                 </li>
                 <li className="nav-item px-2">
-                    <Link className="nav-link">
+                    <Link className="nav-link" to="/discover">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="30"

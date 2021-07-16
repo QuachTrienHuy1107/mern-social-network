@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/header/header";
+import Header from "../components/header/Header";
 import avatar from "../assets/imgs/avatar.png";
 import "../styles/pages/discover.css";
 export default function Discover() {
