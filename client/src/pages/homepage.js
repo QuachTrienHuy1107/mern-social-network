@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import Status from "../components/home/status";
-import Posts from "../components/home/posts";
+import Status from "../components/home/Status";
+import Posts from "../components/home/Posts";
 import "../styles/pages/home.css";
-import RightSideBar from "../components/home/rightsidebar";
+import RightSideBar from "../components/home/Rightsidebar";
 import avatar from "../assets/imgs/logo192.png";
 import { Container } from "@material-ui/core";
-import Header from "../components/header/header";
+import Header from "../components/header/Header";
 
 let scroll = 0;
 function Homepage() {

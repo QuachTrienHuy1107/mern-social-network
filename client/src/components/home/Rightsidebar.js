@@ -1,7 +1,7 @@
 import React from "react";
-import UserCard from "../usercard";
-import FollowButton from "../followbutton";
-export default function rightsidebar() {
+import UserCard from "../Usercard";
+import FollowButton from "../Followbutton";
+export default function Rightsidebar() {
     return (
         <div className="mt-3" style={{ maxWidth: 300 }}>
             <div className="d-flex justify-content-between align-items-center my-2">
