@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Menu from "./menu";
-import Search from "./search";
+import Menu from "./Menu";
+import Search from "./Search";
 import "../../styles/components/header.css";
 export default function header() {
     return (

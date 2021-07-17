@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Header from "../components/header/header";
-import Info from "../components/profile/info";
-import Saved from "../components/profile/saved";
-import Posts from "../components/profile/posts";
+import Header from "../components/header/Header";
+import Info from "../components/profile/Info";
+import Saved from "../components/profile/Saved";
+import Posts from "../components/profile/Posts";
 
 import "../styles/pages/profile.css";
 export default function Profile() {

@@ -1,7 +1,5 @@
-import { Avatar } from "@material-ui/core";
 import React, { useState } from "react";
 import avatar from "../../assets/imgs/avatar.png";
-import FollowButton from "../followbutton";
 export default function Info() {
     const [showFollowers, setShowFollowers] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
