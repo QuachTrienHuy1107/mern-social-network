@@ -40,7 +40,6 @@ const signup = async (req, res) => {
             data: {
                 username,
                 email,
-                accessToken,
             },
         });
     } catch (error) {
