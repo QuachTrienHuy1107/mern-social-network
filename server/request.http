@@ -9,9 +9,9 @@ POST http://localhost:8000/api/auth/signup
 Content-Type: application/json
 
 {
-    "username": "quachhuy11071",
-    "password": "quachhuy11071",
-    "email": "1754050033huy@gmail.com"
+    "username": "quachhuy110712",
+    "password": "quachhuy110712",
+    "email": "1754050034huy@gmail.com"
 }
 
 ###
