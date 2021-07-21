@@ -1,8 +1,8 @@
-// import { Route, Redirect} from 'react-router-dom'
+import { Route, Redirect } from "react-router-dom";
 
-// const PrivateRouter = (props) => {
-//     const firstLogin = localStorage.getItem('isLogin')
-//     return firstLogin ? <Route {...props} /> : <Redirect to="/" />
-// }
+const PrivateRouter = (props) => {
+    const firstLogin = localStorage.getItem("isLogin");
+    return firstLogin ? <Route {...props} /> : <Redirect to="/" />;
+};
 
-// export default PrivateRouter;
+export default PrivateRouter;
