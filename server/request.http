@@ -16,14 +16,14 @@ Content-Type: application/json
 
 ###
 # Payload
-    # username: String (required, unique)
+    # email: String (required, unique)
     # password: String (required)
 POST http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "quachhuy11071",
-    "password": "quachhuy11071"
+    "email": "quachhuy1107@gmail.com",
+    "password": "quachhuy1107"
 }
 
 ###

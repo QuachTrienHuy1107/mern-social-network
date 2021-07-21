@@ -40,7 +40,6 @@ const signup = async (req, res) => {
             data: {
                 username,
                 email,
-                accessToken,
             },
         });
     } catch (error) {
@@ -55,17 +54,17 @@ const signup = async (req, res) => {
  * @Desc Sign in using email and password.
  */
 const login = async (req, res) => {
-    const { username, password } = req.body;
-    if (!username || !password) {
+    const { email, password } = req.body;
+    if (!email || !password) {
         return res.status(404).json({
             success: false,
-            message: "Missing username and/or password",
+            message: "Missing email and/or password",
         });
     }
 
     try {
         // Check user in db
-        const userLogin = await User.findOne().or([{ username }, { password }]);
+        const userLogin = await User.findOne().or([{ email }, { password }]);
         if (!userLogin) return res.status(404).json({ success: false, message: "User doesn't exist" });
 
         // Verify password
@@ -85,7 +84,7 @@ const login = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Login successfully",
-            username,
+            email,
             password,
             accessToken,
             refreshToken,
