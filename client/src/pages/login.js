@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import "../styles/pages/auth.css";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/actions/authAction";
-import axios from "axios";
-import ENDPOINT from "../api/endpoint";
+
 export default function Login() {
     const initialState = { email: "", password: "" };
     const [userData, setUserData] = useState(initialState);
+    const [typePassword, setTypePassword] = useState(false);
     const { email, password } = userData;
+
     const dispatch = useDispatch();
 
     const handleChangeInput = (e) => {
@@ -20,26 +21,6 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(login(userData));
-
-        try {
-            const params = {
-                username: email,
-                password: password,
-            };
-            const res = await axios.post(ENDPOINT.LOGIN, params);
-            console.log(res);
-        } catch (error) {
-            console.log("Login failed", error);
-        }
-
-        // axios
-        //     .post("http://localhost:8000/api/auth/login", userData)
-        //     .then((res) => {
-        //         console.log(res);
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
     };
     return (
         <div className="auth_page">
@@ -68,13 +49,20 @@ export default function Login() {
 
                     <div className="pass">
                         <input
-                            type="password"
+                            type={typePassword ? "text" : "password"}
                             className="form-control"
                             id="exampleInputPassword1"
                             name="password"
                             value={password}
                             onChange={handleChangeInput}
                         />
+                        <small
+                            onClick={() => {
+                                setTypePassword(!typePassword);
+                            }}
+                        >
+                            {typePassword ? "Hide" : "Show"}
+                        </small>
                     </div>
                 </div>
 

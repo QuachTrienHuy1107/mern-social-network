@@ -4,7 +4,7 @@ import notifyReducer from "./notifyReducer";
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    notif: notifyReducer,
+    notify: notifyReducer,
 });
 
 export default rootReducer;
