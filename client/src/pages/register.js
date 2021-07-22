@@ -1,23 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
+import { register } from "../redux/actions/authAction";
 export default function Register() {
+    const { auth, notify } = useSelector((state) => state);
+    const initialState = { username: "", email: "", password: "", cf_password: "" };
+    const [userData, setUserData] = useState(initialState);
+    const { username, email, password, cf_password } = userData;
+    const [typePassword, setTypePassword] = useState(false);
+    const [typeCfPassword, setTypeCfPassword] = useState(false);
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (auth.token) {
+            history.push("/");
+        }
+    }, [auth.token, history]);
+
+    const handleChangeInput = (e) => {
+        const { name, value } = e.target;
+        setUserData({ ...userData, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        dispatch(register(userData));
+    };
     return (
         <div className="auth_page">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h3 className="text-uppercase text-danger text-center mb-4">Register</h3>
-
-                <div className="form-group">
-                    <label htmlFor="fullname">Full Name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="fullname"
-                        name="fullname"
-                        style={{ background: `${alert.fullname ? "#fd2d6a14" : ""}` }}
-                    />
-
-                    <small className="form-text text-danger">{alert.fullname ? alert.fullname : ""}</small>
-                </div>
 
                 <div className="form-group">
                     <label htmlFor="username">User Name</label>
@@ -26,10 +39,11 @@ export default function Register() {
                         className="form-control"
                         id="username"
                         name="username"
-                        style={{ background: `${alert.username ? "#fd2d6a14" : ""}` }}
+                        value={username.toLocaleLowerCase().replace(/ /g, "")}
+                        onChange={handleChangeInput}
+                        style={{ background: `${notify.username ? "#fd2d6a14" : ""}` }}
                     />
-
-                    <small className="form-text text-danger">{alert.username ? alert.username : ""}</small>
+                    <small className="form-text text-danger">{notify.username ? notify.username : ""}</small>
                 </div>
 
                 <div className="form-group">
@@ -39,10 +53,12 @@ export default function Register() {
                         className="form-control"
                         id="exampleInputEmail1"
                         name="email"
-                        style={{ background: `${alert.email ? "#fd2d6a14" : ""}` }}
+                        value={email}
+                        onChange={handleChangeInput}
+                        style={{ background: `${notify.username ? "#fd2d6a14" : ""}` }}
                     />
 
-                    <small className="form-text text-danger">{alert.email ? alert.email : ""}</small>
+                    <small className="form-text text-danger">{notify.email ? notify.email : ""}</small>
                 </div>
 
                 <div className="form-group">
@@ -50,15 +66,24 @@ export default function Register() {
 
                     <div className="pass">
                         <input
-                            type="pass"
+                            type={typePassword ? "text" : "password"}
                             className="form-control"
                             id="exampleInputPassword1"
                             name="password"
-                            style={{ background: `${alert.password ? "#fd2d6a14" : ""}` }}
+                            value={password}
+                            onChange={handleChangeInput}
+                            style={{ background: `${notify.username ? "#fd2d6a14" : ""}` }}
                         />
+                        <small
+                            onClick={() => {
+                                setTypePassword(!typePassword);
+                            }}
+                        >
+                            {typePassword ? "Hide" : "Show"}
+                        </small>
                     </div>
 
-                    <small className="form-text text-danger">{alert.password ? alert.password : ""}</small>
+                    <small className="form-text text-danger">{notify.password ? notify.password : ""}</small>
                 </div>
 
                 <div className="form-group">
@@ -66,18 +91,26 @@ export default function Register() {
 
                     <div className="pass">
                         <input
-                            type="pass"
+                            type={typeCfPassword ? "text" : "password"}
                             className="form-control"
                             id="cf_password"
                             name="cf_password"
-                            style={{ background: `${alert.cf_password ? "#fd2d6a14" : ""}` }}
+                            value={cf_password}
+                            onChange={handleChangeInput}
+                            style={{ background: `${notify.username ? "#fd2d6a14" : ""}` }}
                         />
+                        <small
+                            onClick={() => {
+                                setTypeCfPassword(!typeCfPassword);
+                            }}
+                        >
+                            {typeCfPassword ? "Hide" : "Show"}
+                        </small>
+                        <small className="form-text text-danger">{notify.cf_password ? notify.cf_password : ""}</small>
                     </div>
-
-                    <small className="form-text text-danger">{alert.cf_password ? alert.cf_password : ""}</small>
                 </div>
 
-                <div className=" justify-content-between d-flex mx-0 mb-3">
+                {/* <div className=" justify-content-between d-flex mx-0 mb-3">
                     <label htmlFor="male">
                         Male: <input type="radio" id="male" name="gender" value="male" defaultChecked />
                     </label>
@@ -89,14 +122,17 @@ export default function Register() {
                     <label htmlFor="other">
                         Other: <input type="radio" id="other" name="gender" value="other" />
                     </label>
-                </div>
+                </div> */}
 
                 <button type="submit" className="btn btn-dark w-100">
                     Register
                 </button>
 
                 <p className="my-2">
-                    Already have an account? <p style={{ color: "crimson" }}>Login Now</p>
+                    Already have an account?{" "}
+                    <Link to="/login" style={{ color: "crimson", display: "block" }}>
+                        Login Now
+                    </Link>
                 </p>
             </form>
         </div>

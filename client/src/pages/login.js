@@ -1,16 +1,17 @@
 import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../styles/pages/auth.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/actions/authAction";
 
 export default function Login() {
+    const { auth } = useSelector((state) => state);
     const initialState = { email: "", password: "" };
     const [userData, setUserData] = useState(initialState);
     const [typePassword, setTypePassword] = useState(false);
     const { email, password } = userData;
-
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const handleChangeInput = (e) => {
@@ -21,7 +22,11 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(login(userData));
+        if (auth.token) {
+            history.push("/");
+        }
     };
+
     return (
         <div className="auth_page">
             <form onSubmit={handleSubmit}>
