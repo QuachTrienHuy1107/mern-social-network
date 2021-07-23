@@ -8,7 +8,6 @@ import avatar from "../assets/imgs/logo192.png";
 import { Container } from "@material-ui/core";
 import Header from "../components/header/Header";
 
-let scroll = 0;
 function Homepage() {
     return (
         <>
