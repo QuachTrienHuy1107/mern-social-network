@@ -14,8 +14,10 @@ const getAllPostList = (req, res) => {
  * @Desc create new post.
  */
 const createPost = async (req, res) => {
-    const { title, desc, createdAt, status } = req.body;
-    console.log(req.userId); //id of user
+    const { file } = req;
+    const { title, desc, status, createdAt } = req.body;
+
+    const urlImage = `${Date.now()}_${file?.originalname}`;
     if (!title) {
         return res.status(404).json({ success: false, message: "Title is not empty!!" });
     }
@@ -23,6 +25,7 @@ const createPost = async (req, res) => {
         const data = new Post({
             title,
             desc,
+            image: urlImage || "",
             createdAt: Date.now(),
             status,
             user: req.userId, //After decoded will assign to userId,
