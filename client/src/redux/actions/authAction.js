@@ -41,9 +41,21 @@ export const register = (data) => async (dispatch) => {
         const res = await postDataAPI("auth/signup", data);
 
         dispatch({ type: "AUTH", payload: { userData: res.data } });
-        localStorage.setItem("islogin", true);
+        // localStorage.setItem("islogin", true);
         dispatch({ type: "NOTIFY", payload: { success: "Thành công", isLogin: true } });
     } catch (error) {
         dispatch({ type: "NOTIFY", payload: { error: "Username is already" } });
+    }
+};
+export const forgotpassword = (data) => async (dispatch) => {
+    try {
+        dispatch({ type: "NOTIFY", payload: { loading: true } });
+        const res = await postDataAPI("auth/forgot-password", data);
+        console.log(res);
+        dispatch({ type: "AUTH", payload: { userData: res.data } });
+
+        dispatch({ type: "NOTIFY", payload: { success: "Thành công" } });
+    } catch (error) {
+        dispatch({ type: "NOTIFY", payload: { error: "Wrong Email" } });
     }
 };

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import Notify from "./components/notify/Notify";
 import Discover from "./pages/discover";
+import Forgotpassword from "./pages/forgotpassword";
 import HomePage from "./pages/homepage";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" exact component={HomePage} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
+            <Route path="/forgotpassword" exact component={Forgotpassword} />
             <Route path="/profile" exact component={Profile} />
             <Route path="/discover" exact component={Discover} />
         </div>
