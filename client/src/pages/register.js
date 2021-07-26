@@ -14,7 +14,7 @@ export default function Register() {
 
     useEffect(() => {
         if (auth.token) {
-            history.push("/");
+            history.push("/login");
         }
     }, [auth.token, history]);
 

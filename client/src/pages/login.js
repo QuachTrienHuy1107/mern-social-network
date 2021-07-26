@@ -19,12 +19,17 @@ export default function Login() {
         setUserData({ ...userData, [name]: value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        dispatch(login(userData));
+    useEffect(() => {
         if (auth.token) {
             history.push("/");
         }
+    }, [auth.token, history]);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        dispatch(login(userData));
+        // if (auth.token) {
+        //     history.push("/");
+        // }
     };
 
     return (
@@ -79,6 +84,11 @@ export default function Login() {
                     You don't have an account?{" "}
                     <Link to="/register" style={{ color: "crimson", textDecoration: "none", display: "block" }}>
                         Register Now
+                    </Link>
+                </div>
+                <div className="my-2">
+                    <Link to="/forgotpassword" style={{ color: "crimson", textDecoration: "none", display: "block" }}>
+                        Forgot password ?
                     </Link>
                 </div>
             </form>
