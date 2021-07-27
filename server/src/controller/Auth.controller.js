@@ -172,6 +172,9 @@ const forgotPassword = async (req, res) => {
 const resetPassword = async (req, res) => {
     const { newPassword, token } = req.body;
     const { id } = req.params;
+    if (!newPassword) {
+        return res.status(404).json({ success: false, message: "Missing password" });
+    }
     const salt = bcrypt.genSaltSync(10);
     try {
         const user = await User.findById(id);
