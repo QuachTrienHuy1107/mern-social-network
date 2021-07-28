@@ -52,7 +52,7 @@ Content-Type: application/json
     # token: String (required)
     ###############
     # endpoint: /api/auth/reset-password/:id
-PUT http://localhost:8000/api/auth/reset-password/60db5baabfe7b269f4ceb3a9
+PUT http://localhost:8000/api/auth/reset-password/60db5baabfe7b269f4ceb3a9/
 Content-Type: application/json
 
 {

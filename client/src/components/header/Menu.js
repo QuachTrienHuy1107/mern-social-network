@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-export default function menu() {
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { logout } from "../../redux/actions/authAction";
+
+export default function Menu() {
+    const { auth } = useSelector((state) => state);
+    const history = useHistory();
+
+    // useEffect(() => {
+    //     localStorage.clear();
+    //     history.push("/login");
+    // }, [history]);
+
     return (
         <div className="menu">
             <ul className="navbar-nav flex-row">
@@ -110,8 +120,8 @@ export default function menu() {
                             </Link>
 
                             <div className="dropdown-divider"></div>
-                            <Link className="dropdown-item text-dark" to="/login">
-                                Login
+                            <Link className="dropdown-item text-dark" to="/">
+                                Logout
                             </Link>
                         </div>
                     </li>
