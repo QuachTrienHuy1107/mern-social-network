@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
     "email": "quachhuy1107@gmail.com",
-    "password": "quachhuy1107"
+    "password": "quachhuy1107123"
 }
 
 ###
@@ -56,8 +56,8 @@ PUT http://localhost:8000/api/auth/reset-password/60db5baabfe7b269f4ceb3a9/
 Content-Type: application/json
 
 {
-    "newPassword": "quachhuy1107",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRiNWJhYWJmZTdiMjY5ZjRjZWIzYTkiLCJpYXQiOjE2MjQ5ODg1ODZ9.27qg7CoWN09zZUFQ90t3mn9AVhC8m_fIYccJv4ilw6g"
+    "newPassword": "quachhuy1107123",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc0NzAzMDIsImV4cCI6MTAwMDAwMDE2Mjc0NzAzMDJ9.I5aKAIBoJQUJConViC3jH1Kn5z7NV4m0okb0Lmj3Lp8"
 }
 
 ###
@@ -76,12 +76,18 @@ Content-Type: application/json
     # header: Bearer + accessToken
 POST http://localhost:8000/api/post/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmNWQ5NTRhMDg2NjBmNGM4MTM2YTAiLCJpYXQiOjE2MjUzMzkzOTcsImV4cCI6MTYyNTM0OTM5N30.KPAAraSEOfTgVk5xnn458E-R7hYdffMdDsmdJLUiFvc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc0NzAzMzAsImV4cCI6MTAwMDAwMDE2Mjc0NzAzMzB9.YBH-j-koCiNSNSJGHGxiiM8xMKkVfxFjRDMh1XAALho
 
 {
     "title": "zzzzz",
     "desc": "123213"
 }
+
+###
+GET http://localhost:8000/api/post/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc0NzAzMzAsImV4cCI6MTAwMDAwMDE2Mjc0NzAzMzB9.YBH-j-koCiNSNSJGHGxiiM8xMKkVfxFjRDMh1XAALho
+
+
 
 ###
 # Payload

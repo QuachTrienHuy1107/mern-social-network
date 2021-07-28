@@ -10,6 +10,7 @@ const {
     commentPost,
     paginateComment,
 } = require("../controller/Post.controller");
+const uploadImage = require("../middleware/uploadImage");
 const postRouter = express.Router();
 
 /**
@@ -24,7 +25,7 @@ postRouter.get("/", verifyToken, getAllPostList);
  * @route /api/post
  * @access Restricted
  */
-postRouter.post("/", verifyToken, createPost);
+postRouter.post("/", verifyToken, uploadImage("file"), createPost);
 
 /**
  * @method PUT
