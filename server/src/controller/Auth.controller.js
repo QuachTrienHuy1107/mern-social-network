@@ -153,7 +153,7 @@ const forgotPassword = async (req, res) => {
             to: email,
             subject: "Reset password",
             html: `<h2>Please click the link to reset your password</h2>
-                    <p>http://localhost:3000/api/auth/reset-password/${user._id}</p>
+                    <p>http://localhost:3000/resetpassword/${user._id}</p>
             `,
         };
         transporter.sendMail(data, (error, info) => {
@@ -172,6 +172,9 @@ const forgotPassword = async (req, res) => {
 const resetPassword = async (req, res) => {
     const { newPassword, token } = req.body;
     const { id } = req.params;
+    if (!newPassword) {
+        return res.status(404).json({ success: false, message: "Missing password" });
+    }
     const salt = bcrypt.genSaltSync(10);
     try {
         const user = await User.findById(id);
