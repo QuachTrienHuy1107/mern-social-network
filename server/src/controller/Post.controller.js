@@ -6,8 +6,14 @@ const User = require("../model/user/UserSchema");
 /**
  * @Desc get all post list.
  */
-const getAllPostList = (req, res) => {
-    res.send("post works");
+const getAllPostList = async (req, res) => {
+    try {
+        const postList = await Post.find().populate("userId", "username -_id");
+        res.json({ success: true, postList });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: error.message });
+    }
 };
 
 /**
