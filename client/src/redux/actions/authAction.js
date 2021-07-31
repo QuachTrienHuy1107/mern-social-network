@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { useHistory } from "react-router";
-import { postDataAPI } from "../../utils/fetchData";
+import { postDataAPI, putDataAPI } from "../../utils/fetchData";
 import valid from "../../utils/valid";
 export const TYPES = {
     AUTH: "AUTH",
@@ -57,5 +57,23 @@ export const forgotpassword = (data) => async (dispatch) => {
         dispatch({ type: "NOTIFY", payload: { success: "Thành công" } });
     } catch (error) {
         dispatch({ type: "NOTIFY", payload: { error: "Wrong Email" } });
+    }
+};
+export const logout = () => async (dispatch) => {
+    try {
+        await localStorage.clear();
+    } catch (error) {
+        dispatch({ type: "NOTIFY", payload: { error: "Wrong Email" } });
+    }
+};
+export const resetpassword = (data) => async (dispatch) => {
+    console.log(data);
+    try {
+        dispatch({ type: "NOTIFY", payload: { loading: true } });
+        const res = await putDataAPI("auth/reset-password", data);
+        dispatch({ type: "AUTH", payload: { userData: res.data, token: res.data.accessToken } });
+        localStorage.setItem("islogin", true);
+    } catch (error) {
+        dispatch({ type: "NOTIFY", payload: { error: "failed" } });
     }
 };

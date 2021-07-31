@@ -9,6 +9,7 @@ import HomePage from "./pages/homepage";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
 import Register from "./pages/register";
+import Resetpassword from "./pages/resetpassword";
 import { refreshToken } from "./redux/actions/authAction";
 import PageRender from "./router/PageRender";
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/forgotpassword" exact component={Forgotpassword} />
+            <Route path="/resetpassword/:id" exact component={Resetpassword} />
             <Route path="/profile" exact component={Profile} />
             <Route path="/discover" exact component={Discover} />
         </div>
