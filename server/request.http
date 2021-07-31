@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
     "email": "quachhuy1107@gmail.com",
-    "password": "quachhuy1107123"
+    "password": "zzzzz"
 }
 
 ###
@@ -52,12 +52,11 @@ Content-Type: application/json
     # token: String (required)
     ###############
     # endpoint: /api/auth/reset-password/:id
-PUT http://localhost:8000/api/auth/reset-password/60db5baabfe7b269f4ceb3a9/
+PUT http://localhost:8000/api/auth/reset-password/60dcc7ddb8f700076cd0da31/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJlbWFpbCI6InF1YWNoaHV5MTEwN0BnbWFpbC5jb20iLCJpYXQiOjE2Mjc3MTE3ODcsImV4cCI6MTYyNzcxMjA4N30.tH3TNyvwxjz67xG8A9eEoqBihrvyhCEZSiy1r4W1bnk
 Content-Type: application/json
 
 {
-    "newPassword": "quachhuy1107123",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc0NzAzMDIsImV4cCI6MTAwMDAwMDE2Mjc0NzAzMDJ9.I5aKAIBoJQUJConViC3jH1Kn5z7NV4m0okb0Lmj3Lp8"
+    "newPassword": "zzzzz"
 }
 
 ###

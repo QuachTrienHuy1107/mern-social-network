@@ -36,29 +36,35 @@ authRouter.post("/forgot-password", forgotPassword);
  * @route /api/auth/reset-password
  * @access Public
  */
-authRouter.put("/reset-password/:id", resetPassword);
+authRouter.put("/reset-password/:id/:token", resetPassword);
 
-// @route POST /api/auth/google
-// @desc Register User
-// @access Public
-authRouter.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+/**
+ * @method GET
+ * @route /api/auth/google
+ * @access Public
+ * @Desc Login by google
+ */
 
-authRouter.get("/google/failure", (req, res) => res.send("You failed to login "));
-authRouter.get("/google/success", (req, res) => {
-    console.log("user", req.user);
-    return res.send("You login successfully ");
-});
+authRouter.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
+/**
+ * @method GET
+ * @route /api/auth/google
+ * @access Public
+ * @Desc Login by google when success
+ */
 authRouter.get(
     "/google/callback",
     passport.authenticate("google", {
         successRedirect: "/api/auth/google/success",
         failureRedirect: "/api/auth/google/failure",
-    }),
-    function (req, res) {
-        // Successful authentication, redirect home.
-        res.status(200).send("Login successfully");
-    }
+        session: false,
+    })
 );
+
+authRouter.get("/google/failure", (req, res) => res.send("You failed to login "));
+authRouter.get("/google/success", (req, res) => {
+    return res.send("You login successfully ");
+});
 
 module.exports = authRouter;
