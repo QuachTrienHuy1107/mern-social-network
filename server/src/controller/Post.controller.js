@@ -6,16 +6,24 @@ const User = require("../model/user/UserSchema");
 /**
  * @Desc get all post list.
  */
-const getAllPostList = (req, res) => {
-    res.send("post works");
+const getAllPostList = async (req, res) => {
+    try {
+        const postList = await Post.find().populate("userId", "username -_id");
+        res.json({ success: true, postList });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: error.message });
+    }
 };
 
 /**
  * @Desc create new post.
  */
 const createPost = async (req, res) => {
-    const { title, desc, createdAt, status } = req.body;
-    console.log(req.userId); //id of user
+    const { file } = req;
+    const { title, desc, status, createdAt } = req.body;
+
+    const urlImage = `${Date.now()}_${file?.originalname}`;
     if (!title) {
         return res.status(404).json({ success: false, message: "Title is not empty!!" });
     }
@@ -23,6 +31,7 @@ const createPost = async (req, res) => {
         const data = new Post({
             title,
             desc,
+            image: urlImage || "",
             createdAt: Date.now(),
             status,
             user: req.userId, //After decoded will assign to userId,

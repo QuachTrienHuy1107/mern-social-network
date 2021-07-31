@@ -40,7 +40,6 @@ const signup = async (req, res) => {
             data: {
                 username,
                 email,
-                accessToken,
             },
         });
     } catch (error) {
@@ -55,17 +54,17 @@ const signup = async (req, res) => {
  * @Desc Sign in using email and password.
  */
 const login = async (req, res) => {
-    const { username, password } = req.body;
-    if (!username || !password) {
+    const { email, password } = req.body;
+    if (!email || !password) {
         return res.status(404).json({
             success: false,
-            message: "Missing username and/or password",
+            message: "Missing email and/or password",
         });
     }
 
     try {
         // Check user in db
-        const userLogin = await User.findOne().or([{ username }, { password }]);
+        const userLogin = await User.findOne().or([{ email }, { password }]);
         if (!userLogin) return res.status(404).json({ success: false, message: "User doesn't exist" });
 
         // Verify password
@@ -85,12 +84,10 @@ const login = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Login successfully",
-            data: {
-                username,
-                password,
-                accessToken,
-                refreshToken,
-            },
+            email,
+            password,
+            accessToken,
+            refreshToken,
         });
     } catch (error) {
         res.status(500).json({
@@ -151,12 +148,15 @@ const forgotPassword = async (req, res) => {
             },
         });
 
+        //Generate token for authorizing user is valid
+        const token = jwt.sign({ userId: user._id, email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
+
         const data = {
             form: "quachhuy1107@gmail.com",
             to: email,
             subject: "Reset password",
             html: `<h2>Please click the link to reset your password</h2>
-                    <p>http://localhost:3000/api/auth/reset-password/${user._id}</p>
+                    <p>http://localhost:3000/resetpassword/${user._id}/${token}</p>
             `,
         };
         transporter.sendMail(data, (error, info) => {
@@ -173,8 +173,13 @@ const forgotPassword = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
-    const { newPassword, token } = req.body;
-    const { id } = req.params;
+    const { newPassword } = req.body;
+    const { id, token } = req.params;
+    console.log("id", id);
+    console.log("token", token);
+    if (!newPassword) {
+        return res.status(404).json({ success: false, message: "Missing password" });
+    }
     const salt = bcrypt.genSaltSync(10);
     try {
         const user = await User.findById(id);
@@ -185,7 +190,7 @@ const resetPassword = async (req, res) => {
         //Verify token
         const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         if (decoded.userId !== id) {
-            return res.status(404).json({ success: false, message: "Invalid or expired password reset token" });
+            return res.status(404).json({ success: false, message: "Invalid password or expired reset token" });
         }
         // All good
         const hashPassword = await bcrypt.hashSync(newPassword, salt);

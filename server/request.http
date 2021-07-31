@@ -9,21 +9,21 @@ POST http://localhost:8000/api/auth/signup
 Content-Type: application/json
 
 {
-    "username": "quachhuy11071",
-    "password": "quachhuy11071",
-    "email": "1754050033huy@gmail.com"
+    "username": "quachhuy110712",
+    "password": "quachhuy110712",
+    "email": "1754050034huy@gmail.com"
 }
 
 ###
 # Payload
-    # username: String (required, unique)
+    # email: String (required, unique)
     # password: String (required)
 POST http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "quachhuy11071",
-    "password": "quachhuy11071"
+    "email": "quachhuy1107@gmail.com",
+    "password": "zzzzz"
 }
 
 ###
@@ -52,12 +52,11 @@ Content-Type: application/json
     # token: String (required)
     ###############
     # endpoint: /api/auth/reset-password/:id
-PUT http://localhost:8000/api/auth/reset-password/60db5baabfe7b269f4ceb3a9
+PUT http://localhost:8000/api/auth/reset-password/60dcc7ddb8f700076cd0da31/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJlbWFpbCI6InF1YWNoaHV5MTEwN0BnbWFpbC5jb20iLCJpYXQiOjE2Mjc3MTE3ODcsImV4cCI6MTYyNzcxMjA4N30.tH3TNyvwxjz67xG8A9eEoqBihrvyhCEZSiy1r4W1bnk
 Content-Type: application/json
 
 {
-    "newPassword": "quachhuy1107",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRiNWJhYWJmZTdiMjY5ZjRjZWIzYTkiLCJpYXQiOjE2MjQ5ODg1ODZ9.27qg7CoWN09zZUFQ90t3mn9AVhC8m_fIYccJv4ilw6g"
+    "newPassword": "zzzzz"
 }
 
 ###
@@ -76,12 +75,18 @@ Content-Type: application/json
     # header: Bearer + accessToken
 POST http://localhost:8000/api/post/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmNWQ5NTRhMDg2NjBmNGM4MTM2YTAiLCJpYXQiOjE2MjUzMzkzOTcsImV4cCI6MTYyNTM0OTM5N30.KPAAraSEOfTgVk5xnn458E-R7hYdffMdDsmdJLUiFvc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc0NzAzMzAsImV4cCI6MTAwMDAwMDE2Mjc0NzAzMzB9.YBH-j-koCiNSNSJGHGxiiM8xMKkVfxFjRDMh1XAALho
 
 {
     "title": "zzzzz",
     "desc": "123213"
 }
+
+###
+GET http://localhost:8000/api/post/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc0NzAzMzAsImV4cCI6MTAwMDAwMDE2Mjc0NzAzMzB9.YBH-j-koCiNSNSJGHGxiiM8xMKkVfxFjRDMh1XAALho
+
+
 
 ###
 # Payload
