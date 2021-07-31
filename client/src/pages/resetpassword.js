@@ -5,6 +5,7 @@ import { resetpassword } from "../redux/actions/authAction";
 
 export default function Resetpassword() {
     const { auth, notify } = useSelector((state) => state);
+
     const initialState = { password: "", cf_password: "" };
     const [userData, setUserData] = useState(initialState);
     const { password, cf_password } = userData;

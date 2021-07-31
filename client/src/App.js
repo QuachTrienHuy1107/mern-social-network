@@ -11,6 +11,7 @@ import Profile from "./pages/profile";
 import Register from "./pages/register";
 import Resetpassword from "./pages/resetpassword";
 import { refreshToken } from "./redux/actions/authAction";
+import { getPosts } from "./redux/actions/postAction";
 import PageRender from "./router/PageRender";
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(refreshToken());
+    }, []);
+    useEffect(() => {
+        dispatch(getPosts(auth.token));
     }, []);
     return (
         <div>

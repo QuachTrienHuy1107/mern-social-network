@@ -120,7 +120,7 @@ export default function Menu() {
                             </Link>
 
                             <div className="dropdown-divider"></div>
-                            <Link className="dropdown-item text-dark" to="/">
+                            <Link className="dropdown-item text-dark" to="/login">
                                 Logout
                             </Link>
                         </div>

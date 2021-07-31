@@ -1,6 +1,5 @@
 import axios from "axios";
 
-import { useHistory } from "react-router";
 import { postDataAPI, putDataAPI } from "../../utils/fetchData";
 import valid from "../../utils/valid";
 export const TYPES = {
@@ -18,18 +17,17 @@ export const login = (data) => async (dispatch) => {
         dispatch({ type: "NOTIFY", payload: { error: "Loggin Failed" } });
     }
 };
-export const refreshToken = (data) => async (dispatch) => {
-    const isLogin = localStorage.getItem("islogin");
-    console.log(isLogin);
-    if (isLogin) {
-        // dispatch({ type: "NOTIFY", payload: { loading: true } });
-        try {
-            // const res = await postDataAPI("auth/token", data);
-            // console.log(res);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+export const refreshToken = () => async (dispatch) => {
+    // const isLogin = localStorage.getItem("islogin");
+    // if (isLogin) {
+    //     dispatch({ type: "NOTIFY", payload: { loading: true } });
+    //     try {
+    //         const res = await postDataAPI("auth/token");
+    //         console.log(res);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 };
 export const register = (data) => async (dispatch) => {
     try {
@@ -70,6 +68,7 @@ export const resetpassword = (data) => async (dispatch) => {
     console.log(data);
     try {
         dispatch({ type: "NOTIFY", payload: { loading: true } });
+
         const res = await putDataAPI("auth/reset-password", data);
         dispatch({ type: "AUTH", payload: { userData: res.data, token: res.data.accessToken } });
         localStorage.setItem("islogin", true);
