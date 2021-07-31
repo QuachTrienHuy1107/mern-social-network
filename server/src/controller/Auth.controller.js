@@ -148,12 +148,15 @@ const forgotPassword = async (req, res) => {
             },
         });
 
+        //Generate token for authorizing user is valid
+        const token = jwt.sign({ userId: user._id, email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
+
         const data = {
             form: "quachhuy1107@gmail.com",
             to: email,
             subject: "Reset password",
             html: `<h2>Please click the link to reset your password</h2>
-                    <p>http://localhost:3000/resetpassword/${user._id}</p>
+                    <p>http://localhost:3000/resetpassword/${user._id}/${token}</p>
             `,
         };
         transporter.sendMail(data, (error, info) => {
@@ -170,8 +173,10 @@ const forgotPassword = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
-    const { newPassword, token } = req.body;
-    const { id } = req.params;
+    const { newPassword } = req.body;
+    const { id, token } = req.params;
+    console.log("id", id);
+    console.log("token", token);
     if (!newPassword) {
         return res.status(404).json({ success: false, message: "Missing password" });
     }
@@ -185,7 +190,7 @@ const resetPassword = async (req, res) => {
         //Verify token
         const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         if (decoded.userId !== id) {
-            return res.status(404).json({ success: false, message: "Invalid or expired password reset token" });
+            return res.status(404).json({ success: false, message: "Invalid password or expired reset token" });
         }
         // All good
         const hashPassword = await bcrypt.hashSync(newPassword, salt);
