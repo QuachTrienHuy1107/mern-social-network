@@ -1,14 +1,20 @@
 import { TYPES } from "../actions/postAction";
 
-const initialState = {};
+const initialState = {
+    page: 2,
+    result: 0,
+    postLists: [],
+};
 
-const authReducer = (state = initialState, action) => {
+const postReducer = (state = initialState, action) => {
     switch (action.type) {
         case TYPES.GET_POSTS:
-            return action.payload;
-
+            return {
+                ...state,
+                postLists: action.payload.postList,
+            };
         default:
             return state;
     }
 };
-export default authReducer;
+export default postReducer;

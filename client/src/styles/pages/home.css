@@ -25,7 +25,7 @@
     box-shadow: 0 0 4px #ddd;
 }
 /* --------- Post Card Header --------- */
-.posts .card_header {
+.card_header {
     display: flex;
     justify-content: space-between;
     align-items: center;

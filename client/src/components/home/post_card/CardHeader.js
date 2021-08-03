@@ -1,18 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Avatar from "../../../assets/imgs/avatar.png";
-export default function CardHeader() {
+import moment from "moment";
+export default function CardHeader({ postList }) {
     return (
         <div className="card_header">
             <div className="d-flex">
                 <img width="50" height="50" src={Avatar} size="big-avatar" />
 
-                <div className="card_name">
+                <div className="card_name ms-3">
                     <h6 className="m-0">
                         <Link to="/profile/userDetail" className="text-dark">
-                            Admin
+                            {postList.user}
                         </Link>
                     </h6>
+                    <p className="mb-0 ">{postList.status}</p>
+                    <small>{moment(postList.createdAt).fromNow()}</small>
                 </div>
             </div>
 

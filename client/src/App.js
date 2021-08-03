@@ -16,13 +16,17 @@ import PageRender from "./router/PageRender";
 
 function App() {
     const { auth } = useSelector((state) => state);
+    // console.log(auth.token);
+    const accessToken = auth;
+    const checkToken = localStorage.getItem("token");
+
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(refreshToken());
     }, []);
     useEffect(() => {
-        dispatch(getPosts(auth.token));
-    }, []);
+        if (checkToken !== "") dispatch(getPosts(accessToken));
+    }, [accessToken]);
     return (
         <div>
             <Notify />
@@ -30,7 +34,7 @@ function App() {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/forgotpassword" exact component={Forgotpassword} />
-            <Route path="/resetpassword/:id" exact component={Resetpassword} />
+            <Route path="/resetpassword/:id/:token" exact component={Resetpassword} />
             <Route path="/profile" exact component={Profile} />
             <Route path="/discover" exact component={Discover} />
         </div>
