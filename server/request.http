@@ -52,7 +52,8 @@ Content-Type: application/json
     # token: String (required)
     ###############
     # endpoint: /api/auth/reset-password/:id
-PUT http://localhost:8000/api/auth/reset-password/60dcc7ddb8f700076cd0da31/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJlbWFpbCI6InF1YWNoaHV5MTEwN0BnbWFpbC5jb20iLCJpYXQiOjE2Mjc3MTE3ODcsImV4cCI6MTYyNzcxMjA4N30.tH3TNyvwxjz67xG8A9eEoqBihrvyhCEZSiy1r4W1bnk
+    # 60dcc7ddb8f700076cd0da31/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJlbWFpbCI6InF1YWNoaHV5MTEwN0BnbWFpbC5jb20iLCJpYXQiOjE2Mjc3MTE3ODcsImV4cCI6MTYyNzcxMjA4N30.tH3TNyvwxjz67xG8A9eEoqBihrvyhCEZSiy1r4W1bnk
+PUT http://localhost:8000/api/auth/reset-password/
 Content-Type: application/json
 
 {

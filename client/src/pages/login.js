@@ -91,14 +91,6 @@ export default function Login() {
                         Forgot password ?
                     </Link>
                 </div>
-                <div className="my-2">
-                    <Link
-                        to="/resetpassword/:id"
-                        style={{ color: "crimson", textDecoration: "none", display: "block" }}
-                    >
-                        Reset password ?
-                    </Link>
-                </div>
             </form>
         </div>
     );

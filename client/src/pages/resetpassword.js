@@ -5,19 +5,19 @@ import { resetpassword } from "../redux/actions/authAction";
 
 export default function Resetpassword() {
     const { auth, notify } = useSelector((state) => state);
-    const initialState = { password: "", cf_password: "" };
+
+    const initialState = { newPassword: "" };
     const [userData, setUserData] = useState(initialState);
-    const { password, cf_password } = userData;
-    const [typePassword, setTypePassword] = useState(false);
+    const { newPassword } = userData;
     const [typeCfPassword, setTypeCfPassword] = useState(false);
     // const history = useHistory();
     const param = useParams();
-    // console.log(param);
+
     const dispatch = useDispatch();
 
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
-        setUserData({ ...userData, [name]: value });
+        setUserData({ ...userData, [name]: value, param });
     };
 
     const handleSubmit = async (e) => {
@@ -30,40 +30,15 @@ export default function Resetpassword() {
                 <h3 className="text-uppercase text-danger text-center mb-4">Reset Password</h3>
 
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-
-                    <div className="pass">
-                        <input
-                            type={typePassword ? "text" : "password"}
-                            className="form-control"
-                            id="exampleInputPassword1"
-                            name="password"
-                            value={password}
-                            onChange={handleChangeInput}
-                            style={{ background: `${notify.username ? "#fd2d6a14" : ""}` }}
-                        />
-                        <small
-                            onClick={() => {
-                                setTypePassword(!typePassword);
-                            }}
-                        >
-                            {typePassword ? "Hide" : "Show"}
-                        </small>
-                    </div>
-
-                    <small className="form-text text-danger">{notify.password ? notify.password : ""}</small>
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="cf_password">Confirm Password</label>
+                    <label htmlFor="newPassword">Confirm Password</label>
 
                     <div className="pass">
                         <input
                             type={typeCfPassword ? "text" : "password"}
                             className="form-control"
-                            id="cf_password"
-                            name="cf_password"
-                            value={cf_password}
+                            id="newPassword"
+                            name="newPassword"
+                            value={newPassword}
                             onChange={handleChangeInput}
                             style={{ background: `${notify.username ? "#fd2d6a14" : ""}` }}
                         />
@@ -74,7 +49,7 @@ export default function Resetpassword() {
                         >
                             {typeCfPassword ? "Hide" : "Show"}
                         </small>
-                        <small className="form-text text-danger">{notify.cf_password ? notify.cf_password : ""}</small>
+                        <small className="form-text text-danger">{notify.newPassword ? notify.newPassword : ""}</small>
                     </div>
                 </div>
 

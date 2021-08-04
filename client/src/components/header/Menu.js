@@ -7,12 +7,18 @@ import { logout } from "../../redux/actions/authAction";
 export default function Menu() {
     const { auth } = useSelector((state) => state);
     const history = useHistory();
-
     // useEffect(() => {
     //     localStorage.clear();
     //     history.push("/login");
     // }, [history]);
+    const logout = () => {
+        const isLogin = localStorage.removeItem("islogin");
+        const token = localStorage.removeItem("token");
 
+        if (!isLogin) {
+            history.push("/login");
+        }
+    };
     return (
         <div className="menu">
             <ul className="navbar-nav flex-row">
@@ -120,7 +126,7 @@ export default function Menu() {
                             </Link>
 
                             <div className="dropdown-divider"></div>
-                            <Link className="dropdown-item text-dark" to="/">
+                            <Link onClick={logout} className="dropdown-item text-dark" to="/login">
                                 Logout
                             </Link>
                         </div>
