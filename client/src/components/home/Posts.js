@@ -1,7 +1,7 @@
 import React from "react";
 import PostCard from "../PostCard";
 
-export default function posts() {
+export default function Posts() {
     return (
         <div className="posts">
             <PostCard />

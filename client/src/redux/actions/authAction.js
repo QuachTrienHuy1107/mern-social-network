@@ -1,6 +1,3 @@
-import axios from "axios";
-
-import { useHistory } from "react-router";
 import { postDataAPI, putDataAPI } from "../../utils/fetchData";
 import valid from "../../utils/valid";
 export const TYPES = {
@@ -13,23 +10,23 @@ export const login = (data) => async (dispatch) => {
 
         dispatch({ type: "AUTH", payload: { userData: res.data, token: res.data.accessToken } });
         localStorage.setItem("islogin", true);
+        localStorage.setItem("token", res.data.accessToken);
         dispatch({ type: "NOTIFY", payload: { success: "Thành công", isLogin: true } });
     } catch (error) {
         dispatch({ type: "NOTIFY", payload: { error: "Loggin Failed" } });
     }
 };
-export const refreshToken = (data) => async (dispatch) => {
-    const isLogin = localStorage.getItem("islogin");
-    console.log(isLogin);
-    if (isLogin) {
-        // dispatch({ type: "NOTIFY", payload: { loading: true } });
-        try {
-            // const res = await postDataAPI("auth/token", data);
-            // console.log(res);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+export const refreshToken = () => async (dispatch) => {
+    // const isLogin = localStorage.getItem("islogin");
+    // if (isLogin) {
+    //     dispatch({ type: "NOTIFY", payload: { loading: true } });
+    //     try {
+    //         const res = await postDataAPI("auth/token");
+    //         console.log(res);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 };
 export const register = (data) => async (dispatch) => {
     try {
@@ -60,19 +57,19 @@ export const forgotpassword = (data) => async (dispatch) => {
     }
 };
 export const logout = () => async (dispatch) => {
-    try {
-        await localStorage.clear();
-    } catch (error) {
-        dispatch({ type: "NOTIFY", payload: { error: "Wrong Email" } });
-    }
+    // try {
+    //     localStorage.removeItem("islogin");
+    // } catch (error) {
+    //     dispatch({ type: "NOTIFY", payload: { error: "Wrong Email" } });
+    // }
 };
 export const resetpassword = (data) => async (dispatch) => {
-    console.log(data);
     try {
         dispatch({ type: "NOTIFY", payload: { loading: true } });
-        const res = await putDataAPI("auth/reset-password", data);
+        const res = await putDataAPI(`auth/reset-password/${data.param.id}/${data.param.token}`, data);
         dispatch({ type: "AUTH", payload: { userData: res.data, token: res.data.accessToken } });
         localStorage.setItem("islogin", true);
+        dispatch({ type: "NOTIFY", payload: { success: "Thành công", isLogin: true } });
     } catch (error) {
         dispatch({ type: "NOTIFY", payload: { error: "failed" } });
     }
