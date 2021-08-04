@@ -9,9 +9,9 @@ POST http://localhost:8000/api/auth/signup
 Content-Type: application/json
 
 {
-    "username": "quachhuy110712",
-    "password": "quachhuy110712",
-    "email": "1754050034huy@gmail.com"
+    "username": "quachhuy1107",
+    "password": "quachhuy1107",
+    "email": "quachhuy1107@gmail.com"
 }
 
 ###
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
     "email": "quachhuy1107@gmail.com",
-    "password": "zzzzz"
+    "password": "quachhuy1107"
 }
 
 ###
@@ -52,11 +52,11 @@ Content-Type: application/json
     # token: String (required)
     ###############
     # endpoint: /api/auth/reset-password/:id
-PUT http://localhost:8000/api/auth/reset-password/60dcc7ddb8f700076cd0da31/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJlbWFpbCI6InF1YWNoaHV5MTEwN0BnbWFpbC5jb20iLCJpYXQiOjE2Mjc3MTE3ODcsImV4cCI6MTYyNzcxMjA4N30.tH3TNyvwxjz67xG8A9eEoqBihrvyhCEZSiy1r4W1bnk
+PUT http://localhost:8000/api/auth/reset-password/60dcc7ddb8f700076cd0da31/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJlbWFpbCI6InF1YWNoaHV5MTEwN0BnbWFpbC5jb20iLCJpYXQiOjE2Mjc5MDE3MjMsImV4cCI6MTYyNzkwMjYyM30.CTJNLN9MXjF_gqqbUxH8TtX0HcD6kzSoU7LalP3gub4
 Content-Type: application/json
 
 {
-    "newPassword": "zzzzz"
+    "newPassword": "quachhuy1107"
 }
 
 ###
@@ -84,7 +84,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjY
 
 ###
 GET http://localhost:8000/api/post/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc0NzAzMzAsImV4cCI6MTAwMDAwMDE2Mjc0NzAzMzB9.YBH-j-koCiNSNSJGHGxiiM8xMKkVfxFjRDMh1XAALho
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc5MDE3OTMsImV4cCI6MTAwMDAwMDE2Mjc5MDE3OTJ9.ohPVQHpaVDDWyvn_G5kEyUFTGpwQ1Ljm6-tn0VQfXFY
 
 
 
@@ -123,12 +123,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRiN
     ###############
     # header: Bearer + accessToken
 POST http://localhost:8000/api/post/like/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYmUzNDczYThjYTg2N2M2YzQ4MTciLCJpYXQiOjE2MjUwNzk0MTgsImV4cCI6MTYyNTA4MDQxOH0.yWhgy4QzS3DM1Y3KOeI_B23z4qwTTaTLkxWzqRBlrOQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc5MTM2NDgsImV4cCI6MTAwMDAwMDE2Mjc5MTM2NDh9.yWRImRFrEAHjjRQRcxdtKIjKIML2WA6BpGJMcxVSq7g
 Content-Type: application/json
 
 {
-    "postId":"60dcb4e4c6632b66b024227f",
-    "userId": "60dcbe3473a8ca867c6c4817"
+    "postId":"60e0b7f36f6a99142c1dae66",
+    "userId": "60dcc7ddb8f700076cd0da31"
 }
 
 ###
@@ -186,7 +186,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjY
     "dateOfBirth":"22/22/2022"
 }
 
-//================================================== Conversationn ==================================================
+###
+# Payload
+    # friendId: string
+    ###############
+    # header: Bearer + accessToken
+    # endpoint: /api/user/friend
+PATCH http://localhost:8000/api/user/friend
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYzdkZGI4ZjcwMDA3NmNkMGRhMzEiLCJpYXQiOjE2Mjc5MTM2NDgsImV4cCI6MTAwMDAwMDE2Mjc5MTM2NDh9.yWRImRFrEAHjjRQRcxdtKIjKIML2WA6BpGJMcxVSq7g
+
+{
+    "id":"60df5d954a08660f4c8136a0"
+}
+//================================================== Conversation ==================================================
 ###
 POST http://localhost:8000/api/chat/add
 Content-Type: application/json
