@@ -1,4 +1,4 @@
-import { Link } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { forgotpassword } from "../redux/actions/authAction";

@@ -1,9 +1,9 @@
 import axiosClient from "./axiosClient";
 
 class LoginApi {
-    getAll = (params) => {
+    getAll = () => {
         const url = "/auth/login";
-        return axiosClient.post(url, { params });
+        return axiosClient.post(url);
     };
 }
 const loginApi = new LoginApi();
